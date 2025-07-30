@@ -6,8 +6,8 @@ phases:
       - mvn clean install
       - echo Logging in to Amazon ECR...
       - aws --version
-      - REPOSITORY_URI=https://ap-south-1.console.aws.amazon.com/ecr/repositories/private/962634577728/aws-cicd/_/summary?region=ap-south-1
-      - aws ecr get-login-password --region ap-south-1 | docker login --sanjeev21011981@gmail.com AWS --Sanju!@#$%12345-stdin $REPOSITORY_URI
+      - REPOSITORY_URI=https://ap-south-1.console.aws.amazon.com/ecr/repositories/private/962634577728/aws-cicd?region=ap-south-1
+      - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin $REPOSITORY_URI
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
   build:
